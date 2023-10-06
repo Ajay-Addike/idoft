@@ -1,0 +1,43 @@
+name: Flaky Workflow
+
+on:
+  workflow_dispatch:  # Trigger the workflow manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # You can change the runner as needed
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Clone the repository
+        run: |
+          cd ~
+          git clone https://github.com/apache/servicecomb-java-chassis
+        working-directory: $HOME
+
+      - name: Change directory
+        run: |
+          cd servicecomb-java-chassis
+        working-directory: $HOME/servicecomb-java-chassis
+
+      - name: Checkout specific commit
+        run: |
+          git checkout eec5b5cb85b3b9c11628f3b9d2b0a4456e177495
+        working-directory: $HOME/servicecomb-java-chassis
+
+      - name: Build with Maven (clean install)
+        run: |
+          mvn clean install -DskipTests -pl swagger/swagger-generator -am
+        working-directory: $HOME/servicecomb-java-chassis
+
+      - name: Run specific test
+        run: |
+          mvn -pl swagger/swagger-generator test -Dtest=org.apache.servicecomb.swagger.generator.core.TestSwaggerUtils#should_not_lost_ApiParam_description_when_wrap_parameter_to_body
+        working-directory: $HOME/servicecomb-java-chassis
+
+      - name: Run Nondex Maven Plugin
+        run: |
+          mvn -pl swagger/swagger-generator edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=org.apache.servicecomb.swagger.generator.core.TestSwaggerUtils#should_not_lost_ApiParam_description_when_wrap_parameter_to_body
+        working-directory: $HOME/servicecomb-java-chassis
