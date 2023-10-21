@@ -20,6 +20,9 @@ jobs:
     - name: Change directory to servicecomb-java-chassis
       run: cd servicecomb-java-chassis
 
+    - name: list all dirs
+      run: ls
+
     - name: Fetch all branches and tags from the remote
       run: git fetch --all
 
