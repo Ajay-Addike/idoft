@@ -20,6 +20,9 @@ jobs:
     - name: Change directory to servicecomb-java-chassis
       run: cd servicecomb-java-chassis
 
+    - name: show current path
+      run: pwd
+
     - name: list all dirs
       run: ls
 
