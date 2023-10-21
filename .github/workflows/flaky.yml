@@ -27,7 +27,8 @@ jobs:
     #   run: git checkout eec5b5cb85b3b9c11628f3b9d2b0a4456e177495
 
     - name: Build project (clean install without tests)
-      run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
+      run: mvn clean install -DskipTests -pl swagger/swagger-generator -am -e
+      # run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
 
     - name: Run specific test
       run: mvn -pl swagger/swagger-generator test -Dtest=org.apache.servicecomb.swagger.generator.core.TestSwaggerUtils#should_not_lost_ApiParam_description_when_wrap_parameter_to_body
