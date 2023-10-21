@@ -10,16 +10,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        repository: apache/servicecomb-java-chassis
+        ref: main
     
-    - name: Change directory to home
-      run: cd ~
+    # - name: Change directory to home
+    #   run: cd ~
 
-    - name: Clone repository
-      run: git clone https://github.com/apache/servicecomb-java-chassis
+    # - name: Clone repository
+    #   run: git clone https://github.com/apache/servicecomb-java-chassis
 
-    - name: Change directory to servicecomb-java-chassis
-      run: cd servicecomb-java-chassis
 
+    
     - name: show current path
       run: pwd
 
