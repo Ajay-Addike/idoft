@@ -22,11 +22,11 @@ jobs:
 
 
     
-    - name: show current path
-      run: pwd
+    # - name: show current path
+    #   run: pwd
 
-    - name: list all dirs
-      run: ls
+    # - name: list all dirs
+    #   run: ls
 
     - name: Fetch all branches and tags from the remote
       run: git fetch --all
