@@ -35,11 +35,12 @@ jobs:
     #   run: git checkout eec5b5cb85b3b9c11628f3b9d2b0a4456e177495
 
     - name: Build project (clean install without tests)
-      run: mvn clean install -DskipTests -pl swagger/swagger-generator -am -e
+      run: mvn clean install -DskipTests -pl byte-buddy-dep -am
       # run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
 
     - name: Run specific test
-      run: mvn -pl swagger/swagger-generator test -Dtest=org.apache.servicecomb.swagger.generator.core.TestSwaggerUtils#should_not_lost_ApiParam_description_when_wrap_parameter_to_body
+      run: mvn -pl byte-buddy-dep test -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionForLoadedAnnotationDifferentClassLoaderTest#testEquals
 
     - name: Run non-deterministic test
-      run: mvn -pl swagger/swagger-generator edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=org.apache.servicecomb.swagger.generator.core.TestSwaggerUtils#should_not_lost_ApiParam_description_when_wrap_parameter_to_body
+      run: mvn -pl byte-buddy-dep edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionForLoadedAnnotationDifferentClassLoaderTest#testEquals
+
