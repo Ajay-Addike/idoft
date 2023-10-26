@@ -39,8 +39,8 @@ jobs:
       # run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
 
     - name: Run specific test
-      run: mvn -pl byte-buddy-dep test -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionForLoadedAnnotationDifferentClassLoaderTest#testEquals
+      run: mvn -pl byte-buddy-dep test -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionLatentTest#testEquals
 
     - name: Run non-deterministic test
-      run: mvn -pl byte-buddy-dep edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionForLoadedAnnotationDifferentClassLoaderTest#testEquals
+      run: mvn -pl byte-buddy-dep edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=net.bytebuddy.description.annotation.AnnotationDescriptionLatentTest#testEquals
 
