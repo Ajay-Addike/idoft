@@ -13,30 +13,9 @@ jobs:
       with:
         repository: raphw/byte-buddy
         ref: master
-    
-    # - name: Change directory to home
-    #   run: cd ~
-
-    # - name: Clone repository
-    #   run: git clone https://github.com/apache/servicecomb-java-chassis
-
-
-    
-    # - name: show current path
-    #   run: pwd
-
-    # - name: list all dirs
-    #   run: ls
-
-    # - name: Fetch all branches and tags from the remote
-    #   run: git fetch --all
-
-    # - name: Checkout specific commit
-    #   run: git checkout eec5b5cb85b3b9c11628f3b9d2b0a4456e177495
 
     - name: Build project (clean install without tests)
       run: mvn clean install -DskipTests -pl byte-buddy-dep -am
-      # run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
 
     - name: Run without the NonDex tool(Regular Run)
       run: mvn -pl byte-buddy-dep test -Dtest=net.bytebuddy.description.method.MethodDescriptionLatentTest#testToString
