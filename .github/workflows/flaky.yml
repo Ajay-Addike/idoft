@@ -38,9 +38,9 @@ jobs:
       run: mvn clean install -DskipTests -pl byte-buddy-dep -am
       # run: mvn clean install -DskipTests -pl swagger/swagger-generator -am
 
-    - name: Run specific test
+    - name: Run without the NonDex tool(Regular Run)
       run: mvn -pl byte-buddy-dep test -Dtest=net.bytebuddy.description.method.MethodDescriptionLatentTest#testToString
 
-    - name: Run non-deterministic test
+    - name: Run with the NonDex tool
       run: mvn -pl byte-buddy-dep edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=net.bytebuddy.description.method.MethodDescriptionLatentTest#testToString
 
